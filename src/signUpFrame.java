@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class signUpFrame extends loginFrame {
+public class signUpFrame extends loginFrame implements databaseOperations {
     JPasswordField retypePassword;
     JLabel retypeLabel;
     JButton backButton;

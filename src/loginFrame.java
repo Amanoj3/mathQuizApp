@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class loginFrame extends JFrame {
+public class loginFrame extends JFrame implements databaseOperations {
 
     private signUpFrame createAccountFrame;
     protected JButton createAccountBtn;
