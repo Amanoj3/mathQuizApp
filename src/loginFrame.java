@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 public class loginFrame extends JFrame {
 
     private signUpFrame createAccountFrame;
-
+    protected JButton createAccountBtn;
     //user variables
     protected JTextField userField;
     protected JLabel userLabel;
@@ -15,18 +15,25 @@ public class loginFrame extends JFrame {
     protected JLabel passwordLabel;
 
     // login button
-    protected JButton signIn;
+    protected final JButton signIn;
 
     public void accountOperations() { // invoke DB operations here
         System.out.println("Username: " + userField.getText());
         System.out.println("Password: " + passwordField.getText());
     }
 
-    loginFrame() {
+    private void create_Account_Frame() {
         createAccountFrame = new signUpFrame(this);
+        this.setVisible(false);
+    }
+
+    loginFrame() {
         //login button
         signIn = new JButton("Sign in");
-        signIn.setBounds(100,100,75,25);
+        signIn.setBounds(50,100,75,25);
+        //button that lets you create an account
+        createAccountBtn = new JButton("Sign up");
+        createAccountBtn.setBounds(150,100,85,25);
 
         //username field
         userField = new JTextField(10);
@@ -50,6 +57,7 @@ public class loginFrame extends JFrame {
         this.add(passwordField);
         this.add(userField);
         this.add(signIn);
+        this.add(createAccountBtn);
 
         signIn.addActionListener(new ActionListener() {
             @Override
@@ -58,11 +66,19 @@ public class loginFrame extends JFrame {
             }
         });
 
+        createAccountBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                create_Account_Frame();
+            }
+        });
+
         //establishing the necessary properties of the loginFrame
         this.setLayout(null);
         this.setTitle("Login");
         this.setSize(300,200);
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
